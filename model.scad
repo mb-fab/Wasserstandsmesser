@@ -5,12 +5,16 @@ use <body.scad>;
 
 module model()
 {
-    translate([-50, 0, 0])
+    color("green")
+    {
+    translate([-foot_sideshift, 0, 0])
     foot();
 
-    translate([+50, 0, 0])
+    translate([+foot_sideshift, 0, 0])
     foot();
+    }
 
+    color("blue")
     body();
 }
 

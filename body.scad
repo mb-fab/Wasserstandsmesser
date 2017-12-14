@@ -3,16 +3,42 @@ include <config.scad>;
 
 module body()
 {
-    translate([
-        0,
-        0,
-        150
-        ])
-    cube([
-        120,
-        material_z,
-        300
-        ], center=true);
+    difference()
+    {
+        // Main plate
+        translate([
+            0,
+            0,
+            body_height/2
+            ])
+        cube([
+            body_width,
+            material_z,
+            body_height
+            ], center=true);
+
+        translate([
+            +foot_sideshift,
+            0,
+            foot_z/4 - nothing
+            ])
+        cube([
+            material_z,
+            material_z + 2*nothing,
+            foot_z/2
+            ], center=true);
+
+        translate([
+            -foot_sideshift,
+            0,
+            foot_z/4 - nothing
+            ])
+        cube([
+            material_z,
+            material_z + 2*nothing,
+            foot_z/2
+            ], center=true);
+    }
 }
 
 body();
